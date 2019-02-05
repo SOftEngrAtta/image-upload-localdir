@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>image upload</title>
+</head>
+<body>
+    <input type="file" onchange="uploadImage()">
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</html>
+
+
+<script>
+
+    function uploadImage(event){
+       var preview = document.querySelector('img'); //selects the query named img
+       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+       var reader  = new FileReader();
+        
+       $.ajax({
+           url: 'http://localhost:8080/file/image',
+           method: 'post',
+           contentType: false,
+           data: { test : 'atta ur rehman'},
+           success: function(result){
+               debugger
+           },error: function(error){
+               debugger
+           }
+       })
+    
+    }
+
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>image upload</title>
+</head>
+
+<body>
+    <input type="file" id="file" onchange="uploadImage()">
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</html>
+
+
+<script>
+
+    function uploadImage(event) {
+        var preview = document.querySelector('img'); //selects the query named img
+        data = new FormData();
+        data.append('file', $('#file')[0].files[0]);
+
+        $.ajax({
+            url: 'http://localhost:8080/file/image',
+            type: 'POST',
+            data: data,
+            cache: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            success: function (result) {
+                debugger
+            }, error: function (error) {
+                debugger
+            }
+        })
+
+    }
+
+</script>
